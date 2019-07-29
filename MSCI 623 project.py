@@ -174,22 +174,20 @@ plt.title("Linear model:Predicted vs Actual")
 plt.show()
 
 
-#creating a function that displays coefficient for alpha values in a dataframe
+#creating a function that displays coefficient of predictor for alpha values as a dataframe
 def det_alpha(a_vals):
   #create dataframe with one column containing predictor column names of x
-    df_a = pd.DataFrame(np.array(list(x)),columns = [['Predictor']])
+    dfa = pd.DataFrame(np.array(list(x)),columns = [['Predictor']])
   #for loop for printing coefficient of predictors for different values of alpha.
     for a in a_vals: 
       # set a single alpha value that was parsed in function call as alpha in Lasso 
       lasso_reg = Lasso(alpha = a)
       #fit x and y to model
       lasso_reg.fit(x, y)
-      #create var col to be used for column name
-      col = "α = %f"%a
-      #add coefficients of model to column named as value in col
-      df_a[col] = lasso_reg.coef_
+      #add coefficients of model to column named as value in a
+      dfa['α=%f'%a] = lasso_reg.coef_
       #continue loop for all parsed values. exit loop after and return df_a 
-    return df_a
+    return dfa
 #parsing alpha values as list in function call
 det_alpha([0.001,0.01,0.05,0.1,0.5])
 
