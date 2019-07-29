@@ -14,7 +14,7 @@ from mlxtend.preprocessing import TransactionEncoder
 from mlxtend.frequent_patterns import apriori, association_rules
 
 
-#reading the dataset's csv file into a dataset
+#loading the dataset's csv file
 ds = pd.read_csv('E:/fuel_consumption.csv')
 #checking for NaN values
 na_val = ds.isnull().sum()
@@ -175,6 +175,7 @@ plt.show()
 
 
 #creating a function that displays coefficient of predictor for alpha values as a dataframe
+#adapted from:https://chrisalbon.com/machine_learning/linear_regression/effect_of_alpha_on_lasso_regression/
 def det_alpha(a_vals):
   #create dataframe with one column containing predictor column names of x
     dfa = pd.DataFrame(np.array(list(x)),columns = [['Predictor']])
